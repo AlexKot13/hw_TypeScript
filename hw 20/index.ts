@@ -7,6 +7,27 @@
 // чтобы он выводил `"The dog barks"`.
 
 
+class Animal {
+  constructor(public name: string, public species: string) {}
+  sound(): void {
+    console.log(`'The animal makes a sound'. ${this.name}, ${this.species}`)
+  }
+}
+
+class Dog extends Animal {
+  constructor(name: string, species: string, public breed: string) {
+    super(name, species)
+  }
+  sound(): void {
+    console.log(`Name: ${this.name}, Species: ${this.species}, Breed: ${this.breed} → The dog barks`)
+  }
+}
+
+const animalInfo = new Animal('Leo', 'Lion')
+const dogInfo = new Dog('Bemby', 'Dog', 'Chichuachua')
+
+animalInfo.sound()
+dogInfo.sound()
 
 
 // Задание 2
@@ -15,6 +36,23 @@
 // При каждом добавлении книги это свойство должно увеличиваться.
 // В классе также должен быть метод `addBook()`, который увеличивает счетчик книг.
 // Создайте несколько объектов класса и проверьте, как изменяется общее количество книг.
+
+class Library {
+  static totalBooks: number = 0
+
+  addBook(): void {
+    Library.totalBooks +=1
+    console.log(`Book added! Books amount: ${Library.totalBooks}`)
+  }
+}
+
+const books1 = new Library()
+const books2 = new Library()
+const books3 = new Library()
+
+books1.addBook()
+books2.addBook()
+books3.addBook()
 
 
 
@@ -27,3 +65,19 @@
 // который добавляет новое свойство `type` (тип мотоцикла) 
 // и переопределяет конструктор для инициализации всех трех свойств.
 // Убедитесь, что данные правильно инициализируются при создании объекта.
+
+class Vehicle {
+  constructor(public make: string, public model: string) {}
+}
+
+class Motorcycle extends Vehicle {
+  constructor(make: string, model: string, public type: string) {
+    super(make, model)
+  }
+}
+
+const vehicleDetails = new Vehicle('Audi', 'Q7')
+const motorcycleDetails = new Motorcycle('Yamaha', 'MT', 'naked')
+
+console.log(vehicleDetails)
+console.log(motorcycleDetails)
